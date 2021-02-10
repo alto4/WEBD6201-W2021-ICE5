@@ -129,7 +129,7 @@
           contact.deserialize(contactData);
 
           data += `<tr>
-          <th scope="row">${index}</th>
+          <th scope="row" class="text-center">${index}</th>
           <td>${contact.FullName}</td>
           <td>${contact.ContactNumber}</td>
           <td>${contact.EmailAddress}</td>
@@ -153,12 +153,19 @@
            }
            location.href = "contact-list.html"; // refresh the page
          });
+
+         $("#addButton").on("click", function() 
+         {
+          location.href = "edit.html";
+         });
       }
     }
 
     function displayEdit()
     {
       let key = location.hash.substring(1);
+
+      console.log(key);
 
       let contact = new core.Contact();
 
@@ -172,6 +179,13 @@
         $("#fullName").val(contact.FullName);
         $("#contactNumber").val(contact.ContactNumber);
         $("#emailAddress").val(contact.EmailAddress);
+      }
+      else
+      {
+        // modify the page so that it shows "Add Contact" in the header 
+        $("main>h1").text("Add Contact");
+        // modify edit button so that it shows "Add" as well as the appropriate icon
+        $("#editButton").html(`<i class="fas fa-plus-circle fa-lg"></i> Add`);
       }
 
       $("#editButton").on("click", function() 
