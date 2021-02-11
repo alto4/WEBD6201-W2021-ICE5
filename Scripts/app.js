@@ -217,8 +217,6 @@
     {
       let key = location.hash.substring(1);
 
-      console.log(key);
-
       let contact = new core.Contact();
 
       // check to ensure that the key is not empty
@@ -242,33 +240,45 @@
 
       // form validation
       formValidation();
-
-      $("#editButton").on("click", function() 
-      {
-        // check to see if key is empty
-        if(key == "")
+      
+     $("#editButton").on("click", function() 
         {
-          // create a new key
-          key = contact.FullName.substring(0, 1) + Date.now();
-        }
+            // check to see if key is empty
+          if(key == "")
+          {
+            // create a new key
+            key = contact.FullName.substring(0, 1) + Date.now();
+          }
 
-        // copy contact info from form to contact object
-        contact.FullName = $("#fullName").val();
-        contact.ContactNumber = $("#contactNumber").val();
-        contact.EmailAddress = $("#emailAddress").val();
+          // copy contact info from form to contact object
+          contact.FullName = $("#fullName").val();
+          contact.ContactNumber = $("#contactNumber").val();
+          contact.EmailAddress = $("#emailAddress").val();
 
-        // add the contact info to localStorage
-        localStorage.setItem(key, contact.serialize());
+          // add the contact info to localStorage
+          localStorage.setItem(key, contact.serialize());
 
-        // return to the contact list
-        location.href = "contact-list.html";
-      });
+          // return to the contact list
+          location.href = "contact-list.html";
+          
+        });
+   
 
       $("#cancelButton").on("click", function()
       {
         // return to the contact list
         location.href = "contact-list.html";
       });
+    }
+
+    function displayLogin()
+    {
+
+    }
+
+    function displayRegister()
+    {
+
     }
 
     function Start()
@@ -298,6 +308,12 @@
           case "Edit":
             displayEdit();
             break;
+          case "Login":
+            displayLogin();
+          break;
+          case "Register":
+            displayRegister();
+          break;
         }
         
     }
