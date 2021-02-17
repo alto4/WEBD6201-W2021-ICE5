@@ -1,0 +1,29 @@
+{
+  "contacts": [
+    {
+      "FullName": "Glenn Miller",
+      "ContactNumber": "9054445673",
+      "EmailAddress": "gmiller@gmail.com"
+    },
+    {
+      "FullName": "Louis Armstrong",
+      "ContactNumber": "9054342223",
+      "EmailAddress": "larmstrong@gmail.com"
+    },
+    {
+      "FullName": "Carole King",
+      "ContactNumber": "9034554565",
+      "EmailAddress": "cking@gmail.com"
+    },
+    {
+      "FullName": "Chet Baker",
+      "ContactNumber": "9056545538",
+      "EmailAddress": "chetbaker@gmail.com"
+    },
+    {
+      "FullName": "Patsy Cline",
+      "ContactNumber": "9053443454",
+      "EmailAddress": "pcline@gmail.com"
+    }
+  ]
+}
