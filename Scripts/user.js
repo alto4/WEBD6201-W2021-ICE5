@@ -68,7 +68,7 @@
      */
     toString() 
     {
-      return `Display Name     : ${this.DisplayName} \nEmail Address : ${this.EmailAddress}\nUsername : ${this.Username}`;
+      return `Display Name : ${this.DisplayName} \nEmail Address : ${this.EmailAddress}\nUsername : ${this.Username}`;
     }
 
     /**
