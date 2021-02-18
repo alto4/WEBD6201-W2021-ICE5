@@ -81,9 +81,9 @@
      */
     fromJSON(data)
     {
-      this.FullName = data.fullName;
-      this.ContactNumber = data.contactNumber;
-      this.EmailAddress = data.emailAddress;
+      this.FullName = data.FullName;
+      this.ContactNumber = data.ContactNumber;
+      this.EmailAddress = data.EmailAddress;
     }
 
     /**
