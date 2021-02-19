@@ -1,8 +1,8 @@
 "use strict";
 
 (() => {
-  // check if a user is already logged in
-  if (sessionStorage.getItem("user")) {
+  // check if a user is not logged in
+  if (!sessionStorage.getItem("user")) {
     // redirect to secure area
     location.href = "login.html";
   }

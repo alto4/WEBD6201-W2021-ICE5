@@ -321,15 +321,7 @@
     }
 
     function displayLogin()
-    {
-
-      // check if a user is already logged in
-      if(sessionStorage.getItem("user"))
-      {
-        // redirect to secure area
-        location.href = "contact-list.html";
-      }
-
+    {      
       let messageArea = $("#messageArea");
       messageArea.hide();
 
@@ -390,6 +382,25 @@
 
     }
 
+    function toggleLogin()
+    {
+      if(sessionStorage.getItem("user"))
+      {
+        $("#login").html(
+          `<a id="logout" class="nav-link" aria-current="page" href="#">              <i class="fas fa-sign-out-alt fa-lg"></i> Logout</a>`
+        );
+
+        $("#logout").on("click", function()
+        {
+          // perform logout
+          sessionStorage.clear();
+
+          // redirect back to login
+          location.href = "login.html";
+        });
+      }
+    }
+
     function Start()
     {
         console.log("App Started...");
@@ -424,6 +435,8 @@
             displayRegister();
           break;
         }
+
+        toggleLogin();
         
     }
 
