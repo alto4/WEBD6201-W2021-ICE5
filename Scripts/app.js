@@ -163,54 +163,6 @@
 
     function displayContactList() 
     {
-      // // STEP 1: Create an XHR object
-      // let XHR = new XMLHttpRequest();
-
-      // // STEP 2: Open a new connection
-      // XHR.open("GET", "./Data/contacts.json");
-
-      // // STEP 3: Send the request to the server
-      // XHR.send();
-
-      // // STEP 4: Listen for the response and handle it 
-      // XHR.addEventListener("readystatechange", function()
-      // {
-      //   // ****Everything happens within this event listener, only guarantee of acknowledging response
-      //   // STEP 5: Check if data has loaded without error
-      //   if(XHR.readyState === 4 && XHR.status === 200)
-      //   {
-      //     // STEP 6: Do something with the data
-      //     let contacts = JSON.parse(XHR.responseText).contacts;
-          
-      //     let contactData = "";
-      //     let contactIndex = 1;
-
-
-      //     for(const contact of contacts)
-      //     {
-      //       //let contactData = 
-      //       localStorage.getItem(contactIndex);
-
-      //       let newContact = new core.Contact();
-      //       newContact.fromJSON(contactData);
-  
-      //       contactData += `<tr>
-      //       <th scope="row" class="text-center">${contactIndex}</th>
-      //       <td>${contact.FullName}</td>
-      //       <td>${contact.ContactNumber}</td>
-      //       <td>${contact.EmailAddress}</td>
-      //       <td class="text-center"><button value="${contactIndex}" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Edit</button></td>
-      //       <td class="text-center"><button value="${contactIndex}" class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</button></td>
-      //       </tr>`;
-  
-      //       contactIndex++;
-      //     }
-        
-      //     console.log(contactData);
-      //   }
-      // });
-
-      // console.log("Testing presence of responseText OUTside the event listener...");
 
       if (localStorage.length > 0) 
       {
@@ -250,8 +202,9 @@
          $("button.delete").on("click", function(){
            if(confirm("Are you sure?"))
            {
-            localStorage.removeItem($(this).val());
+             localStorage.removeItem($(this).val());
            }
+           
            location.href = "contact-list.html"; // refresh the page
          });
 
@@ -387,7 +340,7 @@
       if(sessionStorage.getItem("user"))
       {
         $("#login").html(
-          `<a id="logout" class="nav-link" aria-current="page" href="#">              <i class="fas fa-sign-out-alt fa-lg"></i> Logout</a>`
+          `<a id="logout" class="nav-link" aria-current="page" href="#"><i class="fas fa-sign-out-alt fa-lg"></i> Logout</a>`
         );
 
         $("#logout").on("click", function()
@@ -398,6 +351,10 @@
           // redirect back to login
           location.href = "login.html";
         });
+
+        $(`<li class="nav-item">
+          <a id="contactListLink" class="nav-link" aria-current="page" href="contact-list.html"><i class="fas fa-users fa-lg"></i> Contact List</a>
+        </li>`).insertBefore($("#login").parent());
       }
     }
 
