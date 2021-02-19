@@ -163,7 +163,6 @@
 
     function displayContactList() 
     {
-
       // // STEP 1: Create an XHR object
       // let XHR = new XMLHttpRequest();
 
@@ -324,6 +323,66 @@
     function displayLogin()
     {
 
+      // check if a user is already logged in
+      if(sessionStorage.getItem("user"))
+      {
+        // redirect to secure area
+        location.href = "contact-list.html";
+      }
+
+      let messageArea = $("#messageArea");
+      messageArea.hide();
+
+      $("#loginButton").on("click", function(e)
+      { 
+        let username = $("#username");
+        let password = $("#password");
+        let success = false;
+        let newUser = new core.User();
+
+        $.get("./Data/users.json", function(data){
+          // check each user in the users.json (currently Linear Search algorithm)
+          for (const user of data.users)
+          {
+            if(username.val() == user.Username && password.val() == user.Password)
+            {
+              newUser.fromJSON(user);
+              success = true;
+              break;
+            }
+          }
+
+          // if username and password match record, perform login logic
+          if(success)
+          {
+            // add user to session storage
+            sessionStorage.setItem("user", newUser.serialize());
+
+            // hide portential error messages
+            messageArea.removeAttr("class").hide();
+
+            // redirect to secure area (aka contact-list.html)
+            location.href = "contact-list.html";
+          }
+          else
+          {
+            // display an error message
+            username.trigger("focus").trigger("select");
+            messageArea.show().addClass("alert alert-danger").text("Error: Invalid login information.");
+          }
+
+        });
+      });
+
+      $("#cancelButton").on("click", function()
+      {
+        // reset form field values
+        document.forms[0].reset();
+        
+        // return to the home page
+        location.href = "index.html";
+             
+      });
     }
 
     function displayRegister()

@@ -62,6 +62,8 @@
       <div class="offset-md-3 col-md-6 col-sm-12">
         <div class="login" id="contentArea">
           <h1 class="display-4">Register</h1>
+          <div id="messageArea"></div>
+
           <form id="registerForm" novalidate>
             <p class="hint-text">Create your own account. It's free and only takes a minute.</p>
 
@@ -86,7 +88,6 @@
                     placeholder="Email">
                 </div>
               </div>
-
             </div>
 
             <div class="form-group">
@@ -96,7 +97,6 @@
                     placeholder="Password">
                 </div>
               </div>
-
             </div>
 
             <div class="form-group">
@@ -106,9 +106,7 @@
                     value="" placeholder="Confirm Password">
                 </div>
               </div>
-
             </div>
-
 
             <div class="text-right">
               <button id="submitButton" type="submit" class="btn btn-primary btn-lg">Register</button>
@@ -118,7 +116,9 @@
         </div>
         <p class="text-center text-muted small">
           Already have an account?
-          <a href="login.html">Sign in</a>
+          <button href="login.html">Sign in</button>
+          <button id="cancelButton" type="button" class="btn btn-warning"><i class="fas fa-undo fa-lg"></i>
+            Cancel</button>
         </p>
       </div>
     </div>
@@ -128,7 +128,7 @@
   <footer>
     <nav class="navbar fixed-bottom navbar-light bg-light">
       <div class="container-fluid">
-        <h4><i class="far fa-copyright fa-lg"></i> Copyright 2021.</h4>
+        <h4><i class="far fa-copyright"></i> Copyright 2021.</h4>
       </div>
     </nav>
   </footer>
